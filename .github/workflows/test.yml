@@ -31,7 +31,7 @@ jobs:
 
     - name: Wait for services to be ready
       run: |
-        response=$(wget --server-response --spider http://0.0.0.0:8000 2>&1 | awk '/HTTP\// {print $2}' | tail -1)
+        response=$(wget --server-response --spider http://127.0.0.1:8000 2>&1 | awk '/HTTP\// {print $2}' | tail -1)
 
         if [ "$response" == "200" ]; then
         echo "App is healthy!"
