@@ -3,9 +3,11 @@ name: CI - Flask Redis App
 on:
   pull_request:
     branches: [ main ]
+  push:
+    branches: [ main ]
 
 jobs:
-  test:
+  docker-pipeline-build:
     runs-on: ubuntu-latest
 
     steps:
