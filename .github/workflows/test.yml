@@ -26,13 +26,13 @@ jobs:
     - name: Build and run containers
       run: docker-compose up --build -d
 
-    - name: Shut down
+    - name: docker ps command
       run: docker ps
 
     - name: Wait for services to be ready
       run: |
         for i in {1..10}; do
-          response=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/health)
+          response=$(curl -s -o /dev/null -w "%{http_code}" http://0.0.0.0:8000/health)
           if [ "$response" == "200" ]; then
             echo "App is healthy!"
             exit 0
