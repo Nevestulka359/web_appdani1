@@ -24,6 +24,9 @@ jobs:
     - name: Build and run containers
       run: docker-compose up --build -d
 
+    - name: Shut down
+      run: docker ps
+
     - name: Wait for services to be ready
       run: |
         for i in {1..10}; do
