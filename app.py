@@ -13,7 +13,7 @@ r = redis.Redis(host=redis_host, port=redis_port, decode_responses=True)
 
 @app.route('/')
 def home():
-    return "Welcome to my DevOps app!"
+    return "OK", 200
 
 @app.route('/visit')
 def visit():
@@ -26,7 +26,6 @@ def visit():
 @app.route('/health')
 def health():
     try:
-        r.ping()
         return "OK", 200
     except redis.exceptions.ConnectionError:
         return "Redis unavailable", 500
